@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db-master:
+    restart: always
+    image: mysql:8.1.0
+    container_name: db-master
+    volumes:
+      - ~/mysql:/var/lib/mysql
+      - ./db-master/initdb.d:/docker-entrypoint-initdb.d
+      # - ./db-master/conf:/etc/mysql/conf.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=test1234
+      - MYSQL_DATABASE=test
+    ports:
+      - 3306:3306
+
+  # db-slave-0:
+  #   restart: always
+  #   image: mysql:8.1.0
+  #   container_name: db-slave-0
+  #   volumes:
+  #     - /usr/local/mysql-slave-0:/var/lib/mysql
+  #     - ./db-slave-0/conf:/etc/mysql/conf.d
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=test1234
+  #   ports:
+  #     - 3307:3306

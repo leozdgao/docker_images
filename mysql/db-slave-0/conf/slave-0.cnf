@@ -1,0 +1,4 @@
+[mysqld]
+log-bin=mysql-bin
+server-id=200
+replicate-do-db=test
